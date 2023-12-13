@@ -53,6 +53,7 @@ int main() {
 
   int result = 0;
 
+  // sum every other digit
   long temp = credit_card_number;
   while (temp >= 1) {
     temp /= 10;
@@ -65,6 +66,7 @@ int main() {
     temp /= 10;
   }
 
+  // sum remaining digits
   temp = credit_card_number;
   while (temp >= 1) {
     int digit = temp % 10;
