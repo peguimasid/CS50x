@@ -15,7 +15,7 @@ static string *strings = NULL;
 long get_long(const char *format, ...);
 string get_string(va_list *args, const char *format, ...);
 
-long firstDigit(long n) {
+long first_digit(long n) {
   while (n >= 10) {
     n /= 10;
   }
@@ -23,7 +23,7 @@ long firstDigit(long n) {
   return n;
 }
 
-long secondDigit(long n) {
+long second_digit(long n) {
   while (n >= 100) {
     n /= 10;
   }
@@ -31,8 +31,25 @@ long secondDigit(long n) {
   return n % 10;
 }
 
+long get_length(long n) {
+  int result = 0;
+
+  while (n > 0) {
+    result++;
+    n /= 10;
+  }
+
+  return result;
+}
+
 int main() {
   long credit_card_number = get_long("Number: ");
+  int length = get_length(credit_card_number);
+
+  if (length != 13 && length != 15 && length != 16) {
+    printf("INVALID\n");
+    return 1;
+  }
 
   int result = 0;
 
@@ -62,8 +79,8 @@ int main() {
     return 1;
   }
 
-  int first = firstDigit(credit_card_number);
-  int second = secondDigit(credit_card_number);
+  int first = first_digit(credit_card_number);
+  int second = second_digit(credit_card_number);
 
   if (first == 4) {
     printf("VISA\n");
