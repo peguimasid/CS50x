@@ -14,5 +14,6 @@ gcc substitution.c -o substitution
 ./substitution YTNSHKVEFXRBAUQZCLWDMIPGJ2 "Hello!" # "Key must only contain alphabetic characters."
 ./substitution YTNSHKVEYXRBAUQZCLWDMIPGJO "Hello!" # "Each char must appear just once"
 ./substitution YTNSHKVEFXRBAUQZCLWDMIPGJO "Hello!" # "ciphertext: Ehbbq!"
+./substitution YTNSHKVEFXRBAUQZCLWDMIPGJO "AbcDeF!" # "ciphertext: Ehbbq!"
 
 rm substitution

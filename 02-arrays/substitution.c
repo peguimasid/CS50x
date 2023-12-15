@@ -32,6 +32,22 @@ bool has_repeating_letters(char *string) {
   return false;
 }
 
+void print_cipher(char character, char *key) {
+  if (!isalpha(character)) {
+    printf("%c", character);
+    return;
+  }
+
+  int position_in_alphabet = tolower(character) - 97;
+
+  if (isupper(character)) {
+    printf("%c", toupper(key[position_in_alphabet]));
+    return;
+  }
+
+  printf("%c", tolower(key[position_in_alphabet]));
+}
+
 int main(int argc, char **argv) {
   if (argc != 3) {
     return printf("Usage: ./substitution <key> <plaintext>\n");
@@ -52,5 +68,12 @@ int main(int argc, char **argv) {
     return printf("Each char must appear just once\n");
   }
 
-  printf("Key = %s | Text = %s\n", key, plaintext);
+  int len = strlen(plaintext);
+
+  printf("ciphertext: ");
+  for (int i = 0; i < len; i++) {
+    char character = plaintext[i];
+    print_cipher(character, key);
+  }
+  printf("\n");
 }
