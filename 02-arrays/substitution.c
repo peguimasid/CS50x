@@ -11,6 +11,27 @@ bool is_string_alpha(char *string) {
   return true;
 }
 
+bool has_repeating_letters(char *string) {
+  int key_len = 26;
+
+  int count[key_len];
+
+  for (int i = 0; i < key_len; i++) {
+    count[i] = 0;
+  }
+
+  for (int i = 0; i < key_len; i++) {
+    int char_position = toupper(string[i]) - 65;
+    count[char_position]++;
+  }
+
+  for (int i = 0; i < key_len; i++) {
+    if (count[i] != 1) return true;
+  }
+
+  return false;
+}
+
 int main(int argc, char **argv) {
   if (argc != 3) {
     return printf("Usage: ./substitution <key> <plaintext>\n");
@@ -25,6 +46,10 @@ int main(int argc, char **argv) {
 
   if (!is_string_alpha(key)) {
     return printf("Key must only contain alphabetic characters.\n");
+  }
+
+  if (has_repeating_letters(key)) {
+    return printf("Each char must appear just once\n");
   }
 
   printf("Key = %s | Text = %s\n", key, plaintext);

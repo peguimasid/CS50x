@@ -6,7 +6,7 @@ gcc substitution.c -o substitution
 # Validate:
 # 1. Contains exactly 26 chars -> DONE
 # 2. Contains only alphabetical chars -> DONE
-# 3. Contains each letter exacly once ->
+# 3. Contains each letter exacly once -> DONE
 
 
 ./substitution # "Usage: ./substitution <key> <plaintext>"
