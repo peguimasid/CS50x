@@ -4,6 +4,8 @@
 
 const int HEADER_SIZE = 44;
 
+typedef uint8_t BYTE;
+
 int main(int argc, char *argv[]) {
   if (argc != 4) {
     printf("Usage: ./volume input.wav output.wav factor\n");
@@ -29,7 +31,12 @@ int main(int argc, char *argv[]) {
   fread(header, HEADER_SIZE, 1, input);
   fwrite(header, HEADER_SIZE, 1, output);
 
-  // TODO: Read samples from input file and write updated data to output file
+  BYTE buffer;
+
+  while (fread(&buffer, sizeof(BYTE), 1, input) != 0) {
+    buffer *= factor;
+    fwrite(&buffer, sizeof(BYTE), 1, output);
+  }
 
   fclose(input);
   fclose(output);
