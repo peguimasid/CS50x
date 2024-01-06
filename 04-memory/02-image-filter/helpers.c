@@ -125,6 +125,8 @@ int getEdgeColor(int y, int x, int h, int w, RGBTRIPLE copy[h][w], int color) {
 void edges(int height, int width, RGBTRIPLE image[height][width]) {
   RGBTRIPLE copy[height][width];
 
+  grayscale(height, width, image);
+
   for (int i = 0; i < height; i++) {
     for (int j = 0; j < width; j++) {
       copy[i][j] = image[i][j];
