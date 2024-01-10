@@ -24,8 +24,16 @@ bool check(const char *word) {
 
   node *n = table[index];
 
+  char word_lower[LENGTH + 1];
+
+  for (int i = 0; i < strlen(word); i++) {
+    word_lower[i] = tolower(word[i]);
+  }
+
+  word_lower[strlen(word)] = '\0';
+
   while (n) {
-    if (strcmp(n->word, word) == 0) {
+    if (strcmp(n->word, word_lower) == 0) {
       return true;
     }
     n = n->next;
