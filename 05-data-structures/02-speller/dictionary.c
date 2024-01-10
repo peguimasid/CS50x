@@ -16,6 +16,8 @@ typedef struct node {
   struct node *next;
 } node;
 
+int num_words = 0;
+
 // TODO: Choose number of buckets in hash table
 const unsigned int N = 26;
 
@@ -30,7 +32,6 @@ bool check(const char *word) {
 
 // Hashes word to a number
 unsigned int hash(const char *word) {
-  // TODO: Improve this hash function
   return toupper(word[0]) - 'A';
 }
 
@@ -47,10 +48,15 @@ bool load(const char *dictionary) {
     node *tmp = table[index];
 
     node *new_node = malloc(sizeof(node));
+
+    if (new_node == NULL) return false;
+
     strcpy(new_node->word, word);
 
     new_node->next = tmp;
     table[index] = new_node;
+
+    num_words++;
   }
 
   fclose(source);
@@ -59,8 +65,7 @@ bool load(const char *dictionary) {
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
 unsigned int size(void) {
-  // TODO
-  return 0;
+  return num_words;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
