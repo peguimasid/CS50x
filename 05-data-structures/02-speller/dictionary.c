@@ -4,6 +4,11 @@
 
 #include <ctype.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef uint8_t BYTE;
 
 // Represents a node in a hash table
 typedef struct node {
@@ -31,8 +36,25 @@ unsigned int hash(const char *word) {
 
 // Loads dictionary into memory, returning true if successful, else false
 bool load(const char *dictionary) {
-  // TODO
-  return false;
+  FILE *source = fopen(dictionary, "r");
+  BYTE buffer;
+
+  char word[LENGTH + 1];
+
+  while (fscanf(source, "%s", word) != EOF) {
+    unsigned int index = hash(word);
+
+    node *tmp = table[index];
+
+    node *new_node = malloc(sizeof(node));
+    strcpy(new_node->word, word);
+
+    new_node->next = tmp;
+    table[index] = new_node;
+  }
+
+  fclose(source);
+  return true;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
