@@ -17,8 +17,11 @@ def count_words(text: str) -> int:
 
 
 def count_sentences(text: str) -> int:
-    print("TODO")
+    return len([c for c in text if (c == "." or c == "?" or c == "!")])
 
 
-print(count_letters("One fish. Two fish. Red fish. Blue fish."))
-print(count_words("One fish. Two fish. Red fish. Blue fish."))
+letters = count_letters("One fish. Two fish. Red fish. Blue fish.")
+words = count_words("One fish. Two fish. Red fish. Blue fish.")
+sentences = count_sentences(
+    "One fish. Two fish. i want to take this! Red fish. Blue fish."
+)
