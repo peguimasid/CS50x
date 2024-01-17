@@ -3,7 +3,9 @@ import sys
 
 
 def main():
-    # TODO: Check for command-line usage
+    if sys.argv != 3:
+        print("Usage: python3 dna.py databases/<db>.csv sequences/<seq>.csv")
+        return
 
     # TODO: Read database file into a variable
 
