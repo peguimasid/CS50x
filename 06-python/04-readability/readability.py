@@ -20,7 +20,7 @@ def count_sentences(text: str) -> int:
     return len([c for c in text if (c == "." or c == "?" or c == "!")])
 
 
-text = "Would you like them here or there? I would not like them here or there. I would not like them anywhere."
+text = input("Text: ")
 
 letters = count_letters(text)
 words = count_words(text)
