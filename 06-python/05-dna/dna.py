@@ -13,9 +13,10 @@ def main():
         for row in reader:
             db_rows.append(row)
 
-    print(db_rows)
+    with open(sys.argv[2]) as file:
+        dna_sequence = file.read().replace("\n", "")
 
-    # TODO: Read DNA sequence file into a variable
+    print(dna_sequence)
 
     # TODO: Find longest match of each STR in DNA sequence
 
