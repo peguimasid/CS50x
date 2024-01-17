@@ -13,7 +13,7 @@ def count_letters(text: str) -> int:
 
 
 def count_words(text: str) -> int:
-    return len([c for c in text if c.isspace()])
+    return len([c for c in text if c.isspace()]) + 1
 
 
 def count_sentences(text: str) -> int:
