@@ -3,11 +3,17 @@ import sys
 
 
 def main():
-    if sys.argv != 3:
+    if len(sys.argv) != 3:
         print("Usage: python3 dna.py databases/<db>.csv sequences/<seq>.csv")
         return
 
-    # TODO: Read database file into a variable
+    db_rows = []
+    with open(sys.argv[1]) as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            db_rows.append(row)
+
+    print(db_rows)
 
     # TODO: Read DNA sequence file into a variable
 
