@@ -23,9 +23,13 @@ def main():
         match_size = longest_match(dna_sequence, subsequence)
         matches[subsequence] = match_size
 
-    print(matches)
-
-    # TODO: Check database for matching profiles
+    # Find match
+    for row in db_rows:
+        if all(int(row[key]) == value for key, value in matches.items()):
+            print(row["name"])
+            break
+    else:
+        print("No match")
 
 
 def longest_match(sequence, subsequence):
